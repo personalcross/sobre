@@ -11,13 +11,13 @@
 }
 
 .value-card {
-    background-color: var(--white);
+    background-color: var(--background-clear);
     padding: 30px;
-    border-left: 6px solid var(--green);
+    border-left: 6px solid var(--highlight-dark);
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .value-card h3 {
-    color: var(--green);
+    color: var(--highlight-dark);
     margin-bottom: 10px;
 }
