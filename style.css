@@ -1,5 +1,4 @@
 .about-text {
-    max-width: 800px;
     font-size: 1.05rem;
 }
 
@@ -20,4 +19,5 @@
 .value-card h3 {
     color: var(--background-dark);
     margin-bottom: 10px;
+    font-size: 2.0rem;
 }

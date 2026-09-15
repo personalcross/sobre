@@ -1,91 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
-    <title>Sobre | Estúdio Personal Cross</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://personalcross.github.io/assets/favicon/favicon.png" type="image/png">
-    <link rel="stylesheet" href="https://personalcross.github.io/assets/global-style.css">
-    <link rel="stylesheet" href="./style.css">
     
+    <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore-compat.js"></script>
+
+    <title>Sobre | EPC</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="shortcut icon" href="https://personalcross.github.io/assets/favicon/favicon.png">
+    <link rel="stylesheet" href="https://personalcross.github.io/assets/variables.css">
+    <link rel="stylesheet" href="https://personalcross.github.io/assets/global-style.css">
+    <link rel="stylesheet" href="https://personalcross.github.io/assets/components/custom-header.css">
+    <link rel="stylesheet" href="https://personalcross.github.io/assets/components/custom-nav.css">
+    <link rel="stylesheet" href="https://personalcross.github.io/assets/components/hamburger.css">
+    <link rel="stylesheet" href="https://personalcross.github.io/assets/components/settings.css">
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- must be the last one -->
+    <link rel="stylesheet" href="https://personalcross.github.io/assets/responsive.css">
 </head>
+
 <body>
+    <header class="custom-header">
+        <nav class="custom-nav">
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <span class="custom-nav-links">
+                <a href="https://personalcross.github.io/home">Home</a>
+                <a href="https://personalcross.github.io/check-in">Check-in</a>
+                <a href="https://personalcross.github.io/modalities">Modalidades</a>
+                <a href="https://personalcross.github.io/nosso-time/">Nosso Time</a>
+                <a href="https://personalcross.github.io/perguntas-frequentes/">Perguntas Frequentes</a>
+                <a href="https://personalcross.github.io/sobre/">Sobre</a>
+            </span>
+            <img class="settings-icon" src="https://personalcross.github.io/assets/store/settings.png" alt="settings"
+                width="10%">
+        </nav>
+    </header>
 
-<header>
-    <h1>Estúdio Personal Cross</h1>
-    <p>Treino personalizado, ciência aplicada e resultados sustentáveis.</p>
-</header>
+    <main>
+        <!-- Settings Sidebar -->
+        <aside class="settings-sidebar">
+            <button class="close-settings">X</button>
+            <div class="settings-options">
+                <button id="btn-login" class="guest-only">Entrar</button>
+                <button id="btn-signup" class="guest-only">Registrar</button>
 
-<section>
-    <h2 class="section-title">Quem Somos</h2>
-    <div class="about-text">
-        <p>
-            O <strong>Estúdio Personal Cross (EPC)</strong> é um espaço especializado em treino personalizado 
-            para pessoas idosas, com foco no ajuste do treino às diferentes realidades de cada pessoa.
-        </p>
-        <br>
-        <p>
-            A nossa abordagem afasta-se de modelos genéricos e massificados. Cada plano de treino é 
-            construído com base em princípios científicos, avaliação individual contínua e adaptação 
-            progressiva, respeitando objetivos, limitações, histórico clínico e estilo de vida.
-        </p>
-        <br>
-        <p>
-            Trabalhamos com o mesmo rigor e exigência que se encontram nos melhores centros de treino 
-            a nível internacional, aplicados à realidade de cada pessoa que nos procura.
-        </p>
-    </div>
-</section>
+                <button id="btn-gym" class="admin-only">Academia</button>
+                <button id="btn-customers" class="admin-only">Clientes</button>
+                <button id="btn-exercises" class="admin-only">Exercícios</button>
+                <button id="btn-prescriptions" class="admin-only">Prescrições</button>
+                <button id="btn-workouts" class="admin-only">Treinos</button>
 
-<section>
-    <h2 class="section-title">A Nossa Metodologia</h2>
-    <div class="about-text">
-        <p>
-            Trabalhamos com metodologias modernas de treino de força e condicionamento,
-            integrando evidência científica, biomecânica, controlo de carga e periodização.
-            O foco não é apenas levantar mais peso, mas <strong>levantar melhor</strong>,
-            com segurança, eficiência e consistência.
-        </p>
-    </div>
+                <hr class="admin-only" />
+                <button id="btn-manage-accounts" class="admin-only">Gestão de Contas</button>
+                <button id="btn-logout" class="logged-only">Sair</button>
+            </div>
+        </aside>
 
-    <div class="values">
-        <div class="value-card">
-            <h3>Personalização Total</h3>
-            <p>
-                Nenhum aluno é igual. O plano de treino é construído a partir do teu historial 
-                clínico, das tuas limitações, dos teus objetivos e não de um modelo genérico.
-            </p>
+        <section>
+            <h2 class="section-title">Quem Somos</h2>
+            <div class="about-text">
+                <p>
+                    O <strong>Estúdio Personal Cross (EPC)</strong> é um espaço especializado em treino personalizado
+                    para pessoas idosas, com foco no ajuste do treino às diferentes realidades de cada pessoa.
+                </p>
+                <br>
+                <p>
+                    A nossa abordagem afasta-se de modelos genéricos e massificados. Cada plano de treino é
+                    construído com base em princípios científicos, avaliação individual contínua e adaptação
+                    progressiva, respeitando objetivos, limitações, histórico clínico e estilo de vida.
+                </p>
+                <br>
+                <p>
+                    Trabalhamos com o mesmo rigor e exigência que se encontram nos melhores centros de treino
+                    a nível internacional, aplicados à realidade de cada pessoa que nos procura.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">A Nossa Metodologia</h2>
+            <div class="about-text">
+                <p>
+                    Trabalhamos com metodologias modernas de treino de força e condicionamento,
+                    integrando evidência científica, biomecânica, controlo de carga e periodização.
+                    O foco não é apenas levantar mais peso, mas <strong>levantar melhor</strong>,
+                    com segurança, eficiência e consistência.
+                </p>
+            </div>
+
+            <div class="values">
+                <div class="value-card">
+                    <h3>Personalização Total</h3>
+                    <p>
+                        Nenhum aluno é igual. O plano de treino é construído a partir do teu historial
+                        clínico, das tuas limitações, dos teus objetivos e não de um modelo genérico.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <h3>Ciência Aplicada</h3>
+                    <p>
+                        Cada recomendação é fundamentada em evidência científica atual, com prioridade
+                        para os estudos de maior qualidade. Revisões sistemáticas e ensaios clínicos,
+                        sempre que disponíveis.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <h3>Acompanhamento Próximo</h3>
+                    <p>
+                        Indicadores de saúde são monitorizados de forma contínua, com avaliações regulares
+                        que mostram a tua evolução real ao longo do tempo.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="highlight">
+            <div class="highlight-logo">
+                <div>
+                    <a href="#">
+                        <img src="https://personalcross.github.io/assets/store/epc-logo.png" alt="logo">
+                    </a>
+                </div>
+            </div>
+            <div class="highlight-social">
+                <p>Siga-nos:</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/ep.cross?igsi=NGg0cnl1aTFvYTFr" aria-label="Instagram"
+                        target="_blank" rel="noopener noreferrer">
+                        <img src="https://www.vectorlogo.zone/logos/instagram/instagram-tile.svg" alt="instagram">
+                    </a>
+                    <a href="https://www.instagram.com/ep.cross?igsi=NGg0cnl1aTFvYTFr" aria-label="LinkedIn"
+                        target="_blank" rel="noopener noreferrer">
+                        <img src="https://www.vectorlogo.zone/logos/linkedin/linkedin-tile.svg" alt="linkedin">
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <div class="value-card">
-            <h3>Ciência Aplicada</h3>
-            <p>
-                Cada recomendação é fundamentada em evidência científica atual, com prioridade 
-                para os estudos de maior qualidade. Revisões sistemáticas e ensaios clínicos, 
-                sempre que disponíveis.
-            </p>
+        <div class="copyright">
+            © <span id="current-year"></span> Estúdio Personal Cross · Todos os direitos reservados
         </div>
+    </footer>
 
-        <div class="value-card">
-            <h3>Acompanhamento Próximo</h3>
-            <p>
-                Indicadores de saúde são monitorizados de forma contínua, com avaliações regulares 
-                que mostram a tua evolução real ao longo do tempo.
-            </p>
-        </div>
-    </div>
-</section>
-
-<div class="highlight">
-    <p>
-        No Estúdio Personal Cross, treinamos pessoas reais, com objetivos reais,
-        usando ciência real — sem atalhos, sem promessas vazias.
-    </p>
-</div>
-
-<footer>
-    © 2026 Estúdio Personal Cross · Todos os direitos reservados
-</footer>
+    <script src="cs.js"></script>
+    <script src="config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="hamburgerui.js"></script>
+    <script src="sidebarui.js"></script>
+    <script src="auth.js"></script>
+    <script src="time.js"></script>
 
 </body>
+
 </html>
